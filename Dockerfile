@@ -1,9 +1,8 @@
-FROM alpine:edge
-MAINTAINER Krzysztof Szarek
+FROM alpine:3.6
+LABEL maintainer "Krzysztof Szarek"
 
-RUN echo '@testing http://nl.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositories && \
-    apk update && \
-    apk add --no-cache bash bats@testing
+ARG BATS_VERSION=0.4.0-r2
+RUN apk add --no-cache bash bats=$BATS_VERSION
 
 WORKDIR /code
 
